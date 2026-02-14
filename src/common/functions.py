@@ -42,6 +42,9 @@ def softmax(x):
     return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
 
 
+
+
+
 def sum_squared_error(y, t):
     return 0.5 * np.sum((y-t)**2)
 
@@ -65,6 +68,15 @@ def cross_entropy_error(y, t):
     if t.size == y.size:
         # one-hot -> 标签索引：例如 [0,0,1,0] -> 2
         t = t.argmax(axis=1)
+
+    '''
+    y.size 和 y.shape 的区别
+        y.shape：数组的形状，是一个元组，描述每一维的长度。
+        例：y.shape == (batch_size, num_classes) 或 y.shape == (num_classes,)
+    
+    y.size：数组里元素总数（把所有维度长度相乘得到的一个整数）。
+        例：y.shape == (2, 3) 时，y.size == 6
+    '''
 
     batch_size = y.shape[0]
     

@@ -11,6 +11,11 @@ from two_layer_net import TwoLayerNet
 # 读入数据
 (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
 
+print("x_train.shape: ", x_train.shape)
+print("t_train.shape: ", t_train.shape)
+print("x_test.shape: ", x_test.shape)
+print("t_test.shape: ", t_test.shape)
+
 network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 
 
@@ -33,6 +38,7 @@ iter_per_epoch = max(train_size / batch_size, 1)
 for i in range(iters_num):
     batch_mask = np.random.choice(train_size, batch_size)
 
+    # 随机抽取一个 mini-batch
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
 
