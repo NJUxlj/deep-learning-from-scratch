@@ -100,4 +100,34 @@ class SoftmaxWithLoss:
         self.t = None # 监督数据
 
     def forward(self, x, t):
-        pass
+        self.t =t 
+        self.y = softmax(x)
+
+        self.loss = cross_entropy_error(self.y, t)
+
+        return self.loss
+
+
+
+    def backward(self, dout=1):
+        batch_size  =self.t.shape[0]
+
+        if self.t.size == self.y.size:
+            dx = None
+
+        else:
+            dx = self.y.copy()
+
+
+    
+
+
+
+
+
+
+
+
+
+class Dropout:
+    pass
